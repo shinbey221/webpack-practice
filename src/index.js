@@ -1,8 +1,5 @@
 import _ from 'lodash'
-import * as util from './util.js'
-
-console.log(util.Nijou(2));
-console.log(util.NAME);
+import './style.css'
 
 function component(){
   const element = document.createElement('div');
@@ -12,3 +9,4 @@ function component(){
 }
 
 document.body.appendChild(component());
+document.body.classList.add('haikei');
