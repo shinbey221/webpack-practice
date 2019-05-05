@@ -3,8 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const outputPath = path.resolve(__dirname, 'dist')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
-console.log({MiniCssExtractPlugin})
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -54,12 +53,15 @@ module.exports = {
     })
   ],
   optimization: {
-    minimizer: [new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          drop_console: true
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
         }
-      }
-    })]
+      }),
+      new OptimizeCssAssetsPlugin({})
+    ]
   }
 }
